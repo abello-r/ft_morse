@@ -1,0 +1,25 @@
+version: "3.0"
+
+services:
+        python:
+                build:
+                      context: ./srcs/
+                volumes:
+                        - morse_code:/home/morse_code
+                        - tools:/home/tools
+                restart: on-failure 
+                hostname: python
+
+volumes:
+        morse_code:
+                    driver: local
+                    driver_opts:
+                                o: bind
+                                type: none
+                                device: /sgoinfre/students/$USER/private/ft_morse/srcs/morse_code2
+        tools:
+                driver: local
+                driver_opts:
+                        o: bind
+                        type: none
+                        device: /sgoinfre/students/$USER/private/ft_morse/srcs/tools2
